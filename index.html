@@ -1,0 +1,115 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Trump Bot</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+		<link href="https://fonts.googleapis.com/css?family=Alegreya:900|Lora" rel="stylesheet">    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+        <!-- <link rel="stylesheet" href="main.css">  -->
+
+        <style>
+	        body {
+	        	padding:0 15px;
+	        	text-align:center;
+				font-family: 'Lora', serif;
+				font-size:2em;
+	        }
+	        h1 {
+	        	font-family: 'Alegreya', serif;
+	        }
+			#unomas {
+				-moz-box-shadow:inset 0px 34px 0px -15px #b54b3a;
+				-webkit-box-shadow:inset 0px 34px 0px -15px #b54b3a;
+				box-shadow:inset 0px 34px 0px -15px #b54b3a;
+				background-color:#a73f2d;
+				border:1px solid #241d13;
+				display:inline-block;
+				cursor:pointer;
+				color:#ffffff;
+				font-family:Arial;
+				font-size:2em;
+				font-weight:bold;
+				padding:9px 23px;
+				text-decoration:none;
+				text-shadow:0px -1px 0px #7a2a1d;
+				margin:1em 0;
+			}
+			#unomas:hover {
+				background-color:#b34332;
+			}
+			#unomas:active {
+				position:relative;
+				top:1px;
+			}
+			#mouthfart{
+				padding:10px;
+				border:1px solid silver;
+				width:65%;
+				margin-left:auto;
+				margin-right:auto;
+			}
+
+
+			@media only screen and (max-width: 600px) {
+				body {
+					font-size: 20px;
+				}
+			}
+
+
+        </style>
+
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <h1>Donald Trump's Own Words<br/>Spoken By Your Computer</h1>
+        <div id="mouthfart"></div>
+        <a id="unomas" href="index.html">Uno Mas</a>
+        <div id="source">Source: <a href="http://www.nytimes.com/2016/11/23/us/politics/trump-new-york-times-interview-transcript.html">NY Times Round Table Transcript</a><br/>
+        And some <a href="http://www.nytimes.com/2016/11/23/us/politics/your-guide-to-most-important-quotes-times-trump-interview.html">Context</a></div>
+        <!-- Add your site or application content here -->
+        <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.4.min.js"><\/script>')</script>
+
+        <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+        <script>
+        	// Speech nonsense.
+        	if ('speechSynthesis' in window) {
+	        	$.get( "times.html", function( data ) {
+	        		// $('#mouthfart').html(data);
+	        		const trumpets = $(data).find('p.story-content:contains("TRUMP:")');
+					const nugget = trumpets[Math.floor(Math.random()*trumpets.length)];
+					const wisdom = $(nugget).text().replace('TRUMP:','');
+					$('#mouthfart').html(wisdom);
+
+	        		const speaking = sayit(wisdom);
+
+				});
+				 // Synthesis support. Make your web apps talk!
+			} else {
+				$('#mouthfart').html("Sorry, your browser doesn't support text-to-speech which kind of makes this whole exercise pointless.");
+			}
+
+        	function sayit(copy){
+	        	var msg = new SpeechSynthesisUtterance(copy);
+				msg.rate = 1.5; // 0.1 to 10
+				window.speechSynthesis.speak(msg);
+				return msg;
+        	}
+
+            window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
+            ga('create','UA-XXXXX-Y','auto');ga('send','pageview')
+        </script>
+        <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+    </body>
+</html>
