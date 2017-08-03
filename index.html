@@ -78,8 +78,8 @@
         <h1>Donald Trump's Own Words<br/>Spoken By Your Computer</h1>
         <div id="mouthfart"></div>
         <a id="unomas" href="index.html">Uno Mas</a>
-        <div id="source">Source: <a href="//www.nytimes.com/2016/11/23/us/politics/trump-new-york-times-interview-transcript.html">NY Times Round Table Transcript</a><br/>
-        And some <a href="//www.nytimes.com/2016/11/23/us/politics/your-guide-to-most-important-quotes-times-trump-interview.html">Context</a></div>
+        <div id="source">Source: The Washington Post has obtained <a href="//www.nytimes.com/2016/11/23/us/politics/trump-new-york-times-interview-transcript.html">transcripts of two conversations President Trump had with foreign leaders</a>: one with Mexican President Enrique Peña Nieto and another with Australian Prime Minister Malcolm Turnbull.
+        </div>
         <div id="repolink"><a href="https://github.com/nilsjesper/trumpbot">Project Source</a>. This got built real quick so feel free to suggest improvements etc!</div>
         <!-- Add your site or application content here -->
         <script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
@@ -89,9 +89,9 @@
         <script>
         	// Speech nonsense.
         	if ('speechSynthesis' in window) {
-	        	$.get( "times.html", function( data ) {
+	        	$.get( "ausmexico.html", function( data ) {
 	        		// $('#mouthfart').html(data);
-	        		const trumpets = $(data).find('p.story-content:contains("TRUMP:")');
+	        		const trumpets = $(data).find('div.trump p');
 					const nugget = trumpets[Math.floor(Math.random()*trumpets.length)];
 					const wisdom = $(nugget).text().replace('TRUMP:','');
 					$('#mouthfart').html(wisdom);
